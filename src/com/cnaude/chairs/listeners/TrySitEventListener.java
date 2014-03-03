@@ -1,5 +1,8 @@
 package com.cnaude.chairs.listeners;
 
+import me.azenet.UHPlugin.UHPlugin;
+
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -14,6 +17,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.material.Stairs;
 import org.bukkit.material.Step;
 import org.bukkit.material.WoodenStep;
+import org.bukkit.plugin.Plugin;
 
 import com.cnaude.chairs.commands.ChairsIgnoreList;
 import com.cnaude.chairs.core.ChairBlock;
@@ -46,6 +50,14 @@ public class TrySitEventListener implements Listener {
 
     private boolean sitAllowed(Player player, Block block)
     {
+    	
+    	Plugin UHCplugin = Bukkit.getPluginManager().getPlugin("UHPlugin");
+    	if(plugin != null) {
+    		UHPlugin UHPlugin = (UHPlugin) UHCplugin;
+    		if(UHPlugin.isGameRunning())
+    			return false;
+    	}
+    	
     	// Check for permissions
         if (!player.hasPermission("chairs.sit")) {
             return false;
