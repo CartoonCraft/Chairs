@@ -52,7 +52,7 @@ public class TrySitEventListener implements Listener {
     {
     	
     	Plugin UHCplugin = Bukkit.getPluginManager().getPlugin("UHPlugin");
-    	if(plugin != null) {
+    	if(UHCplugin != null && UHCplugin instanceof UHPlugin) {
     		UHPlugin UHPlugin = (UHPlugin) UHCplugin;
     		if(UHPlugin.isGameRunning())
     			return false;
